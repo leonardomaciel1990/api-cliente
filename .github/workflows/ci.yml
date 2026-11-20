@@ -27,6 +27,9 @@ jobs:
       - name: Construir e empacotar a aplicação
         run: mvn --batch-mode --no-transfer-progress package
 
+      - name: Construir imagem Docker
+        run: docker build --tag api-cliente:${{ github.sha }} .
+
       - name: Guardar o JAR gerado
         uses: actions/upload-artifact@v4
         with:
